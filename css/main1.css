@@ -16,19 +16,14 @@ html, body {
 body {
     border: 1px solid black;
     box-sizing: border-box;
-    /* position: relative; */
-    overflow: hidden;
     margin: 0;
     padding: 0;
-    background: url("../media/board.png") no-repeat center center fixed;
-    background-size: cover;
     
 }
 
 #startmodal {
-    display: none;
     position: relative;
-    background: url("../media/background_mountains2.png") no-repeat center center fixed;
+    background: url("media1/background_mountains.png") no-repeat center center fixed;
     background-size: cover;
     top: 0;
     left: 0;
@@ -39,8 +34,8 @@ body {
     z-index: 1;
     overflow: hidden;
     background-position: 0 0;
-    background-repeat: -x;
-    animation: animate 15s ease-out infinite;
+    /* background-repeat: -x; */
+    animation: animate 4s linear infinite;
 }
 @keyframes animate {
     from {
