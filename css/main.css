@@ -1,0 +1,100 @@
+@font-face {
+    font-family:"Pokemon GB";
+    src: url("../fonts/ptype.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family:"Arcade";
+    src: url("../fonts/arcade.ttf") format("truetype");
+  }
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#startmodal {
+    position: relative;
+    background: url("../media/background_mountains.png") no-repeat center center fixed;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* height: 100vh; */
+    /* width: 100vw; */
+    z-index: 1;
+    overflow: hidden;
+    background-position: 0 0;
+    background-repeat: -x;
+    animation: animate 4s linear infinite;
+}
+@keyframes animate {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+.startmod-content { 
+    text-align: center;
+    background-color: rgb(207, 231, 248);
+    background-size: cover;
+    margin: 70px auto 0 auto;
+    height: 40%;
+    width: 55%;
+}
+
+.startmsg {
+    font-family: "Arcade";
+    font-size: 100px;
+    color: rgb(161, 61, 45);
+    text-shadow:
+    0 1px #808d93,
+    -1px 0 #cdd2d5,
+    -1px 2px #808d93,
+    -2px 1px #cdd2d5,
+    -2px 3px #808d93,
+    -3px 2px #cdd2d5,
+    -3px 4px #808d93,
+    -4px 3px #cdd2d5,
+    /* -4px 5px #808d93,
+    -5px 4px #cdd2d5,
+    -5px 6px #808d93,
+    -6px 5px #cdd2d5, */
+    -6px 7px #808d93,
+    -7px 6px #cdd2d5,
+    -7px 8px #808d93,
+    -8px 7px #cdd2d5;
+}
+
+button:focus {
+    outline: none;
+}
+
+.start-btn {
+    font-size: 25px;
+    font-family: "Pokemon GB";
+    letter-spacing: .5px;
+    background-color: rgb(207, 231, 248);
+    border: none;
+    animation: glowing 1300ms infinite;
+}
+
+@keyframes glowing {
+    0% { color: black;}
+    25% {color: red;}
+    50% { color: gold;}
+    75% {color: red;}
+    100% { color:  black;}
+    }

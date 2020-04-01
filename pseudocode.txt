@@ -1,0 +1,48 @@
+App stages: 
+
+START
+
+Opening screen/modal
+Fade in with music
+Flashing start icon
+Stop music/play sound on start click
+
+
+GAME
+
+Separate html doc
+Game screen
+Select 1 or 2 players, select difficulty
+Queue game music
+Display score on left and/or right side of screen
+
+
+GAME LOGIC: 
+randomly select holes for diglett to pop out of:
+1. function to find random index for each hole node in dom
+2. ensure last hole does not pop up twice (if hole = last one, run again)
+
+3. function to make digletts pop out of hole
+4. set time to make them disappear
+5. repeat until time is up
+
+6.function to hit digletts
+7. registers score, adds to scoreboard
+
+Two player mode: turn-based, keeps score for player 1 & 2
+
+
+Difficulty levels: 
+easy: slowest speed/interval at which they appear
+
+intermediate: a little faster/less time in-between appearances
+
+hard: fastest/ least amount of time between appearances
+
+
+
+END
+
+Finishing screen
+Another modal? Separate html doc?
+Show animation
