@@ -14,19 +14,20 @@ html, body {
 }
 
 body {
+    text-align: center;
+    position: relative;
+    width: 100%;
     border: 1px solid black;
     box-sizing: border-box;
     /* position: relative; */
     overflow: hidden;
-    margin: 0;
-    padding: 0;
     background: url("../media/board.png") no-repeat center center fixed;
-    background-size: cover;
+    background-size: 100% 100%;
     
 }
 
 #startmodal {
-    display: none;
+    /* display: none; */
     position: relative;
     background: url("../media/background_mountains2.png") no-repeat center center fixed;
     background-size: cover;
@@ -102,4 +103,53 @@ button:focus {
     50% { color: gold;}
     75% {color: red;}
     100% { color:  black;}
+    }
+
+    #board {
+
+        position: absolute;
+        margin: 0 auto;
+        bottom: 3.5%;
+        left: 5%;
+        height: 43%;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 10px;
+        border: 1px solid black;
+    }
+
+    #gamemodal {
+        display: none;
+        top: 40%;
+        position: relative;
+        font-family: "Pokemon GB";
+        background: url("../media/text_box.png");
+        background-color: white;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        z-index: 1;
+        height: 15%;
+        width: 40%;
+        margin: 0 auto;
+        overflow: auto;
+    }
+
+    .hole {
+        background: url("../media/hole.png") bottom center no-repeat;
+        background-position: 100% 100%;
+        background-size: cover;
+        bottom: 0;
+        /* border: 1px solid black; */
+    }
+
+    .diglett {
+        height: 100%;
+        width: 100%;
+        /* bottom: 0 */
+        background: url("../media/diglett.png") bottom center no-repeat;
+        background-size: 60%;
+        top: 100%;
+        overflow: visible;
     }
