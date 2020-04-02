@@ -27,7 +27,7 @@ body {
 }
 
 #startmodal {
-    /* display: none; */
+    display: none;
     position: relative;
     background: url("../media/background_mountains2.png") no-repeat center center fixed;
     background-size: cover;
@@ -105,21 +105,8 @@ button:focus {
     100% { color:  black;}
     }
 
-    #board {
 
-        position: absolute;
-        margin: 0 auto;
-        bottom: 3.5%;
-        left: 5%;
-        height: 43%;
-        width: 90%;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        grid-column-gap: 10px;
-        border: 1px solid black;
-    }
-
+    
     #gamemodal {
         display: none;
         top: 40%;
@@ -136,20 +123,152 @@ button:focus {
         overflow: auto;
     }
 
+    #scoreboard {
+        font-family: "Pokemon GB";
+        height: 28%;
+        position: relative;
+        background: url("../media/scoreboard.png");
+        background-size: 100% 100%;
+        width: 40%;
+        top: 4%;
+        margin: 0 auto;
+        /* padding-top: 3%; */
+        border-radius: 10px;
+        overflow: auto;
+    }
+
+    #scoreboard2 {
+        display: none;
+        font-family: "Pokemon GB";
+        height: 28%;
+        position: relative;
+        background: url("../media/scoreboard.png");
+        background-size: 100% 100%;
+        width: 40%;
+        top: 4%;
+        margin: 0 auto;
+        /* padding-top: 3%; */
+        border-radius: 10px;
+        overflow: auto;
+    }
+
+    .time {
+        position: relative;
+        margin-top: 17%;
+    }
+
+    .p1score {
+        position: relative;
+        margin-top: 8%;
+    }
+    
+    #board {
+        position: absolute;
+        margin: 0 auto;
+        bottom: 3.5%;
+        left: 5%;
+        height: 43%;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 5%;
+        border: 1px solid black;
+        /* grid-template-areas: "" */
+    }
+
     .hole {
-        background: url("../media/hole.png") bottom center no-repeat;
-        background-position: 100% 100%;
-        background-size: cover;
-        bottom: 0;
+        background: url("../media/hole3.png") bottom center no-repeat;
+        background-size: 100% 100%;
+        bottom: 0; 
+        overflow: hidden; 
+        position: relative;
+        z-index: 1;
         /* border: 1px solid black; */
     }
 
+    .hole:after {
+        display: block;
+        background: url('../media/hole3.png') bottom center no-repeat;
+        background-size: cover;
+        content: '';
+        width: 100%;
+        height: 5%;
+        position: absolute;
+        z-index: 1; 
+        bottom: -30px;
+      }
+
     .diglett {
+        display: inline-block;
         height: 100%;
         width: 100%;
-        /* bottom: 0 */
+        position: relative;
+        /* bottom: 0; */
         background: url("../media/diglett.png") bottom center no-repeat;
-        background-size: 60%;
+        background-size: cover;
         top: 100%;
-        overflow: visible;
+        /* overflow: visible; */
+        transition: all 5s;
+        /* z-index: 1; */
     }
+
+    .hole.popup .diglett {
+        top: 0;
+    }
+
+    .hole10 {
+        grid-column: 5/6;
+        grid-row: 3/4;
+    }
+
+    .hole9 {
+        position: relative;
+        grid-column: 4/4;
+        grid-row: 3/4;
+        right: 60%;
+    }
+
+    .hole8 {
+        grid-column: 2/3;
+        grid-row: 3/4;
+    }
+
+    .hole7 {
+        grid-column: 6/7;
+        grid-row: 2/3;
+    }
+
+    .hole6 {
+        position: relative;
+        left: 35%;
+        grid-column: 4/5;
+        grid-row: 2/3;
+    }
+
+    .hole5 {
+        position: relative;
+        right: 30%;
+        grid-column: 3/4;
+        grid-row: 2/3;
+    }
+
+    .hole4 {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .hole3 {
+        grid-column: 5/6;
+        grid-row: 1/2;
+    }
+    .hole2 {
+        position: relative;
+        right: 60%;
+        grid-column: 4/5;
+        grid-row: 1/2;
+    }
+    .hole1 {
+        grid-column: 2/3;
+
+    }
+    
