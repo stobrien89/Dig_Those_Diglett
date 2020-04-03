@@ -8,6 +8,10 @@
     src: url("../fonts/arcade.ttf") format("truetype");
   }
 
+html { 
+    font-size: calc(1em + 1vw); 
+}
+
 html, body {
     margin: 0;
     height: 100%;
@@ -29,7 +33,7 @@ body {
 #startmodal {
     display: none;
     position: relative;
-    background: url("../media/background_mountains2.png") no-repeat center center fixed;
+    background: url("../media/background_mountains2copy.png") no-repeat center center fixed;
     background-size: cover;
     top: 0;
     left: 0;
@@ -56,14 +60,17 @@ body {
     text-align: center;
     background-color: rgb(207, 231, 248);
     background-size: cover;
-    margin: 70px auto 0 auto;
+    margin: 3% auto 0 auto;
     height: 40%;
     width: 55%;
+    overflow: visible;
 }
 
 .startmsg {
     font-family: "Arcade";
-    font-size: 100px;
+    font-size: 3rem;
+    line-height: 55px;
+    margin-bottom: 35px;
     color: rgb(161, 61, 45);
     text-shadow:
     0 1px #808d93,
@@ -89,13 +96,34 @@ button:focus {
 }
 
 .gamemodebtn {
-    font-size: 25px;
+    /* font-size: 25px; */
     font-family: "Pokemon GB";
+    font-size: .5rem;
+    margin-top: 
     letter-spacing: .5px;
     background-color: rgb(207, 231, 248);
     border: none;
     animation: glowing 1300ms infinite;
 }
+
+.gamemod-btn, .quit-btn, .playagain-btn {
+    position: relative;
+    top: 0;
+    /* font-size: 18px; */
+    font-family: "Pokemon GB";
+    border: none;
+}
+
+.gamemod-btn:before, .quit-btn:before, .playagain-btn:before {
+    content: '▶';
+    visibility: hidden;
+}
+
+.gamemod-btn:hover:before, .quit-btn:hover:before, .playagain-btn:hover:before {
+    display: inline-block;
+    visibility: visible;
+}
+
 
 @keyframes glowing {
     0% { color: black;}
@@ -107,9 +135,10 @@ button:focus {
 
 
     
-    #gamemodal, #textmodal, #endmodal {
+    #gamemodal, #textmodal, #endmodal, #playagain {
         display: none;
-        top: 40%;
+        top: 20%;
+        font-size: .5rem;
         position: relative;
         font-family: "Pokemon GB";
         background: url("../media/text_box.png");
@@ -117,37 +146,27 @@ button:focus {
         background-size: 100% 100%;
         background-repeat: no-repeat;
         z-index: 1;
-        height: 15%;
-        width: 40%;
+        height: 25%;
+        width: 45%;
         margin: 0 auto;
         overflow: hidden;
         /* border-radius: 20px; */
         /* border: 1px solid black; */
     }
 
-    #textmodal {
-        /* display: none; */
-        top: 40%;
+    .gamemod-content, .textmodal-content, .endmodal-content, .playagain-content {
         position: relative;
-        font-family: "Pokemon GB";
-        background: url("../media/text_box.png");
-        background-color: white;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        z-index: 1;
-        height: 15%;
-        width: 40%;
-        margin: 0 auto;
-        overflow: hidden;
-    }
+        top: 10%;
+        line-height: 150%;
+        padding: 5%;
+    } 
 
     .textmod-btn, .endmod-btn {
-        position: absolute;
-        right:    10%;
-        bottom:   15%;
+        position: relative;
+        left: 40%;
         border: none;
         animation: blinking 1.2s infinite;
-        font-size: 20px;
+        /* font-size: 20px; */
 
     }
 
@@ -166,7 +185,7 @@ button:focus {
         position: relative;
         background: url("../media/scoreboard.png");
         background-size: 100% 100%;
-        width: 40%;
+        width: 45%;
         top: 4%;
         margin: 0 auto;
         /* padding-top: 3%; */
@@ -186,13 +205,17 @@ button:focus {
         margin: 0 auto;
         /* padding-top: 3%; */
         border-radius: 10px;
-        overflow: auto;
+        overflow: hidden;
+    }
+
+    .score-content {
+        font-size: .5rem;
     }
     
 
     .time {
         position: relative;
-        margin-top: 17%;
+        margin-top: 23%;
     }
 
     .p1score {
@@ -233,7 +256,7 @@ button:focus {
         width: 100%;
         height: 5%;
         position: absolute;
-        z-index: 1; 
+        z-index: 2; 
         bottom: -30px;
       }
 
@@ -248,7 +271,7 @@ button:focus {
         background-position: 50% 45%;
         top: 100%;
         /* overflow: visible; */
-        transition: all 5s;
+        transition: all .5s;
         /* z-index: 1; */
         border: 1px solid black;
     }

@@ -18,7 +18,7 @@ let win = false;
 
 const selectSound = new Audio("./media/select.m4a");
 const diglettSound = new Audio('./media/diglett_hit.m4a');
-const waitingSound = new Audio('./media/selectgamemode.mp3');
+const waitingSound = new Audio('./media/selectgamemode.m4a');
 const gameSound = new Audio('./media/game.m4a');
 
 const gameDialogue = {
@@ -60,6 +60,9 @@ $(() => {
     const $board = $('#board');
     const $scoreBoard = $('#scoreboard');
     const $scoreBoard2 = $('#scoreboard2');
+    const $playAgainModal = $('#playagain');
+    const $playAgainBtn = $('.playagain-btn');
+    const $quitBtn = $('.quit-btn');
 
     //Initiates start of game
     const startGame = () => {
@@ -70,11 +73,13 @@ $(() => {
     const gameMode = (event) => {
         let target = $(event.currentTarget);
         selectSound.play();
+        playSong(waitingSound);
         target.hasClass('oneplayer') ? startText(1): startText(2);
         hideModal($startModal);
     }
     
     const playGame = (event) => {
+        selectSound.play();
         waitingSound.pause();
         if (twoPlayers) {
             twoPlayerGame();
@@ -86,7 +91,6 @@ $(() => {
     const nextText = (event) => {
         selectSound.play();
         text++;
-        console.log(text);
         text === 2 ? gameText() : startText();
     }
 
@@ -121,7 +125,6 @@ $(() => {
      const popUp = () => {
          const time = timeRandomizer(1000, 5000);
          const hole = randomHole($holes);
-         console.log(time, hole);
          $(hole).addClass('popup');
          setTimeout(() => {
              $(hole).removeClass('popup')
@@ -136,7 +139,6 @@ $(() => {
         p1Turn === true ? p1Score++ : p2Score++;
          addPoints();
          $(event.currentTarget).parent().removeClass('popup');
-         console.log(p1Score);
 
      }
 
@@ -161,7 +163,6 @@ $(() => {
 
      //Displays game instructions
      const startText = (mode) => {
-        waitingSound.play();
         displayModal($board, 'grid');
         displayModal($textModal, 'block');
         $textMsg.text(gameDialogue.intro1);
@@ -177,11 +178,9 @@ $(() => {
 
      const twoPlayerGame = () => {
         hideModal($gameModal);
-            gameSound.currentTime = 0;
-            gameSound.play();
+        playSong(gameSound);
             displayModal($scoreBoard2, 'block');
             countdown = true;
-            console.log(p1Turn);
             popUp();
             countDown(10);
             if (p1Turn === true) {
@@ -191,7 +190,17 @@ $(() => {
                     hideModal($scoreBoard2);
                     displayModal($gameModal, 'block');
                     $gameMsg.text(gameDialogue.player2);
-                    return;
+                    setTimeout(() => {
+                        gameSound.pause();
+                        hideModal($scoreBoard2);
+                        displayModal($endModal, 'block');
+                        if (p1Score < p2Score) {
+                            $endMsg.text(gameDialogue.player2win);
+                        }else {
+                            $endMsg.text(gameDialogue.player1win);
+                        }
+                        return;
+                    }, 11000)
                 }, 10000)
             }
     }
@@ -199,12 +208,13 @@ $(() => {
 
 
      const game = () => {
-            gameSound.play();
+            playSong(gameSound);
             hideModal($gameModal);
             displayModal($scoreBoard, 'block');
             countdown = true;
             popUp();
             countDown(10);
+            checkWin();
             setTimeout(() => {
                 gameSound.pause();
                 hideModal($scoreBoard);
@@ -218,8 +228,50 @@ $(() => {
             }, 10000)
      }
 
-     
+
     
+    
+    
+     const checkWin = () => {
+        if (p1Score >= 5) {
+            win = true;
+        }
+    }
+
+    const playSong = (song) => {
+        song.currentTime = 0;
+        song.play();
+    }
+
+    const endOrReset = (event) => {
+        selectSound.play();
+        if (!win) {
+            hideModal($endModal);
+            displayModal($playAgainModal, 'block');
+        }
+    }
+
+    const resetValues = () => {
+        p1Turn = true;
+        p1Score = 0;
+        p2Score = 0;
+        $p1Score.text('0')
+        $p2Score.text('0')
+        win = false;
+    }
+
+    const restartGame = () => {
+        selectSound.play();
+        hideModal($playAgainModal);
+        playSong(waitingSound);
+        resetValues();
+        gameText();
+    }
+
+    const endGame = () => {
+        hideModal($endModal);
+        hideModal($board);
+    }
 
     startGame();
 
@@ -231,7 +283,11 @@ $(() => {
 
      $digletts.on('click', hitDiglett);
 
-     $endModalBtn.on('click', )
+     $endModalBtn.on('click', endOrReset);
+
+     $playAgainBtn.on('click', restartGame);
+
+     $quitBtn.on('click', endGame);
 
     
     // displayModal($scoreBoard2);
