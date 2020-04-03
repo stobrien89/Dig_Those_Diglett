@@ -10,7 +10,7 @@ Stop music/play sound on start click
 
 GAME
 
-Separate html doc
+Separate html doc?
 Game screen
 Select 1 or 2 players, select difficulty
 Queue game music

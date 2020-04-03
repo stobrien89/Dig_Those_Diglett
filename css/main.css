@@ -88,7 +88,7 @@ button:focus {
     outline: none;
 }
 
-.start-btn {
+.gamemodebtn {
     font-size: 25px;
     font-family: "Pokemon GB";
     letter-spacing: .5px;
@@ -107,7 +107,7 @@ button:focus {
 
 
     
-    #gamemodal {
+    #gamemodal, #textmodal, #endmodal {
         display: none;
         top: 40%;
         position: relative;
@@ -120,10 +120,47 @@ button:focus {
         height: 15%;
         width: 40%;
         margin: 0 auto;
-        overflow: auto;
+        overflow: hidden;
+        /* border-radius: 20px; */
+        /* border: 1px solid black; */
+    }
+
+    #textmodal {
+        /* display: none; */
+        top: 40%;
+        position: relative;
+        font-family: "Pokemon GB";
+        background: url("../media/text_box.png");
+        background-color: white;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        z-index: 1;
+        height: 15%;
+        width: 40%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .textmod-btn, .endmod-btn {
+        position: absolute;
+        right:    10%;
+        bottom:   15%;
+        border: none;
+        animation: blinking 1.2s infinite;
+        font-size: 20px;
+
+    }
+
+    @keyframes blinking{
+        0%{     color: #000;    }
+        49%{    color: #000; }
+        60%{    color: transparent; }
+        99%{    color:transparent;  }
+        100%{   color: #000;    }
     }
 
     #scoreboard {
+        display: none;
         font-family: "Pokemon GB";
         height: 28%;
         position: relative;
@@ -134,7 +171,7 @@ button:focus {
         margin: 0 auto;
         /* padding-top: 3%; */
         border-radius: 10px;
-        overflow: auto;
+        overflow: hidden;
     }
 
     #scoreboard2 {
@@ -151,6 +188,7 @@ button:focus {
         border-radius: 10px;
         overflow: auto;
     }
+    
 
     .time {
         position: relative;
@@ -163,13 +201,13 @@ button:focus {
     }
     
     #board {
+        display: none;
         position: absolute;
         margin: 0 auto;
         bottom: 3.5%;
         left: 5%;
         height: 43%;
         width: 90%;
-        display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(3, 1fr);
         grid-column-gap: 5%;
@@ -179,12 +217,12 @@ button:focus {
 
     .hole {
         background: url("../media/hole3.png") bottom center no-repeat;
-        background-size: 100% 100%;
-        bottom: 0; 
+        background-size: cover;
+        background-position: 50% 40%;
         overflow: hidden; 
         position: relative;
-        z-index: 1;
-        /* border: 1px solid black; */
+        z-index: 2;
+        border: 1px solid black;
     }
 
     .hole:after {
@@ -200,17 +238,19 @@ button:focus {
       }
 
     .diglett {
-        display: inline-block;
+        display: block;
         height: 100%;
         width: 100%;
         position: relative;
         /* bottom: 0; */
-        background: url("../media/diglett.png") bottom center no-repeat;
+        background: url("../media/diglett.png") top center no-repeat;
         background-size: cover;
+        background-position: 50% 45%;
         top: 100%;
         /* overflow: visible; */
         transition: all 5s;
         /* z-index: 1; */
+        border: 1px solid black;
     }
 
     .hole.popup .diglett {

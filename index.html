@@ -15,14 +15,14 @@
    
 
     <div id="scoreboard">
-        <h3 class="time">Time</h3>
-        <h4 class="p1score">Score: 0</h4>
+        <h3 class="time score-content">Time</h3>
+        <h4 class="score-content">Score: <span class="p1score">0</span></h4>
     </div>
     
     <div id="scoreboard2">
-        <h3 class="time">time</h3>
-        <h5 class="p1score">player 1 score</h5>
-        <h5 class="p2score">player 2</h5>
+        <h3 class="time score-content">time</h3>
+        <h5 class="score-content">player 1 score: <span class="p1score">0</span></h5>
+        <h5 class="score-content">player 2 score: <span class="p2score">0</span></h5>
     </div>
 
     <div id="board">
@@ -61,7 +61,8 @@
     <div id="startmodal">
         <div class="startmod-content">
             <h2 class="startmsg">Some working title</h2>
-            <button class="start-btn">Start</button>
+            <button class="gamemodebtn oneplayer">1 Player</button><br><br>
+            <button class="gamemodebtn twoplayer">2 Players</button>
         </div>
     </div>
     
@@ -70,7 +71,25 @@
             <p id="game-message">The game is simple: hit as many Digletts
                 as you can!
             </p>
-            <button class="gamemod-btn start-btn"></button>
+            <button class="gamemod-btn">Start</button>
         </div>
+    </div>
+
+    <div id="textmodal">
+        <div class="textmodal-content">
+            <p id="text-message"></p>
+            <button class="textmod-btn">▼</button>
+        </div>
+    </div>
+
+    <div id="endmodal">
+        <div class="endmodal-content">
+            <p id="end-message"></p>
+            <button class="endmod-btn">▼</button>
+        </div>
+    </div>
+
+    
+
 </body>
 </html>
