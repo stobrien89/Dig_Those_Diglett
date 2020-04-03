@@ -16,10 +16,12 @@ let win = false;
 
 // let twoPlayerGame = false;
 
+const openingSound = new Audio("./media/opening.m4a");
 const selectSound = new Audio("./media/select.m4a");
 const diglettSound = new Audio('./media/diglett_hit.m4a');
 const waitingSound = new Audio('./media/selectgamemode.m4a');
 const gameSound = new Audio('./media/game.m4a');
+const creditsSound = new Audio('./media/end.mp3');
 
 const gameDialogue = {
     intro1: `Digletts have been popping up everywhere in Pallet Town!`,
@@ -63,18 +65,21 @@ $(() => {
     const $playAgainModal = $('#playagain');
     const $playAgainBtn = $('.playagain-btn');
     const $quitBtn = $('.quit-btn');
+    const $credits = $('#credits');
+    const $startOverBtn = $('.startover-btn');
+    const $difficultyModal = $('#difficultymodal')
 
     //Initiates start of game
     const startGame = () => {
+        playSong(openingSound);
         displayModal($startModal, 'block')
     }
 
     //event handler for start buttons
     const gameMode = (event) => {
-        let target = $(event.currentTarget);
         selectSound.play();
         playSong(waitingSound);
-        target.hasClass('oneplayer') ? startText(1): startText(2);
+        $(event.currentTarget).hasClass('oneplayer') ? startText(1): startText(2);
         hideModal($startModal);
     }
     
@@ -260,7 +265,7 @@ $(() => {
         win = false;
     }
 
-    const restartGame = () => {
+    const restartGame = (event) => {
         selectSound.play();
         hideModal($playAgainModal);
         playSong(waitingSound);
@@ -268,9 +273,20 @@ $(() => {
         gameText();
     }
 
-    const endGame = () => {
-        hideModal($endModal);
+    const endGame = (event) => {
+        hideModal($playAgainModal);
         hideModal($board);
+        playSong(creditsSound);
+        displayModal($credits, 'block');
+    }
+
+    const startOver = (event) => {
+        creditsSound.pause();
+        resetValues();
+        twoPlayers = false;
+        text = 0;
+        hideModal($credits);0
+        startGame();
     }
 
     startGame();
@@ -288,6 +304,8 @@ $(() => {
      $playAgainBtn.on('click', restartGame);
 
      $quitBtn.on('click', endGame);
+
+     $startOverBtn.on('click', startOver);
 
     
     // displayModal($scoreBoard2);

@@ -31,9 +31,16 @@ body {
 }
 
 #startmodal {
+    background: url("../media/background_mountains2copy.png") no-repeat center center fixed;
+}
+
+#credits {
+    background: url('../media/background_sea.png') no-repeat center center;
+}
+
+#startmodal, #credits {
     display: none;
     position: relative;
-    background: url("../media/background_mountains2copy.png") no-repeat center center fixed;
     background-size: cover;
     top: 0;
     left: 0;
@@ -44,7 +51,6 @@ body {
     z-index: 1;
     overflow: hidden;
     background-position: 0 0;
-    background-repeat: -x;
     animation: animate 15s ease-out infinite;
 }
 @keyframes animate {
@@ -95,7 +101,7 @@ button:focus {
     outline: none;
 }
 
-.gamemodebtn {
+.gamemodebtn, .startover-btn {
     /* font-size: 25px; */
     font-family: "Pokemon GB";
     font-size: .5rem;
@@ -104,6 +110,19 @@ button:focus {
     background-color: rgb(207, 231, 248);
     border: none;
     animation: glowing 1300ms infinite;
+}
+
+@keyframes glowing {
+    0% { color: black;}
+    25% {color: red;}
+    50% { color: gold;}
+    75% {color: red;}
+    100% { color:  black;}
+    }
+
+.startover-btn {
+    font-size: 1rem;
+    background-color: rgb(125, 203, 247);
 }
 
 .gamemod-btn, .quit-btn, .playagain-btn {
@@ -125,17 +144,8 @@ button:focus {
 }
 
 
-@keyframes glowing {
-    0% { color: black;}
-    25% {color: red;}
-    50% { color: gold;}
-    75% {color: red;}
-    100% { color:  black;}
-    }
-
-
     
-    #gamemodal, #textmodal, #endmodal, #playagain {
+    #gamemodal, #textmodal, #endmodal, #playagain, #difficultymodal {
         display: none;
         top: 20%;
         font-size: .5rem;
@@ -248,7 +258,7 @@ button:focus {
         border: 1px solid black;
     }
 
-    .hole:after {
+    /* .hole:after {
         display: block;
         background: url('../media/hole3.png') bottom center no-repeat;
         background-size: cover;
@@ -258,7 +268,7 @@ button:focus {
         position: absolute;
         z-index: 2; 
         bottom: -30px;
-      }
+      } */
 
     .diglett {
         display: block;
@@ -272,7 +282,7 @@ button:focus {
         top: 100%;
         /* overflow: visible; */
         transition: all .5s;
-        /* z-index: 1; */
+        z-index: -1;
         border: 1px solid black;
     }
 
