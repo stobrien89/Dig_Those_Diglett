@@ -202,7 +202,7 @@ $(() => {
             playSong(gameSound);
             hideModal($gameModal);
             displayModal($scoreBoard, 'block');
-            countdown = true;
+            countDown = true;
             popUp();
             countDown(15);
             checkWin();

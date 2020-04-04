@@ -178,7 +178,7 @@ $(() => {
             gameSound.pause();
             hideModal($scoreBoard2);
             if (p1Turn) {
-                displayModal($gameModal, 'block');
+                $gameMsg.text(gameDialogue.player2);
                 $gameMsg.text(gameDialogue.player2);
                 p1Turn = false;
             }else {
@@ -198,11 +198,12 @@ $(() => {
         }, 16500)
     }
 
-    const game = () => {   
-            playSong(gameSound);
+    const game = () => {
+        debugger;    
+        playSong(gameSound);
             hideModal($gameModal);
             displayModal($scoreBoard, 'block');
-            countdown = true;
+            countDown = true;
             popUp();
             countDown(15);
             checkWin();

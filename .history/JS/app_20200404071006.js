@@ -183,6 +183,9 @@ $(() => {
                 p1Turn = false;
             }else {
                 checkWin();
+                p1Turn = false;
+                console.log(p1Turn);
+                console.log(win);
                 if(win === true) {
                 displayModal($endModal, 'block');
                 if (p1Score < p2Score) {
@@ -195,14 +198,15 @@ $(() => {
                 return;
                 }
             }
-        }, 16500)
+        }, 16,500)
     }
 
-    const game = () => {   
-            playSong(gameSound);
+    const game = () => {
+        debugger;    
+        playSong(gameSound);
             hideModal($gameModal);
             displayModal($scoreBoard, 'block');
-            countdown = true;
+            countDown = true;
             popUp();
             countDown(15);
             checkWin();
@@ -218,7 +222,7 @@ $(() => {
                     $endMsg.text(`Nice job! You ran off ${p1Score} of 'em. Now the professor can finally get his garden back in order`);
                 }
                 return;
-            }, 16000)
+            }, 16500)
      }
 
     const checkWin = () => {
