@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dig Those Diglett</title>
+    <link rel="icon" href="./media/favicon.png">
     <link rel="stylesheet" href="css/main.css">
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -12,7 +13,10 @@
     <script src="JS/app.js"></script>
 </head>
 <body>
-   
+    <!------------------------------------------- WARNING: Excessive amount of Divs--------------------------------->
+
+    
+    <!--------------------------------------- ELEMENTS INVOLVING THE GAME, TIME AND SCOREKEEPING  -------------------------------->
 
     <div id="scoreboard">
         <h6 class="time score-content">Time</h6>
@@ -24,6 +28,7 @@
         <h5 class="score-content">player 1 score: <span class="p1score">0</span></h5>
         <h5 class="score-content">player 2 score: <span class="p2score">0</span></h5>
     </div>
+
 
     <div id="board">
         <div class="hole hole1">
@@ -58,9 +63,12 @@
         </div>
     </div>
 
+
+    <!---------------------------------------------------------------- LOTS OF MODALS --------------------------------------------------------------->
+
     <div id="startmodal">
         <div class="startmod-content">
-            <h1 class="startmsg">Some working title</h1>
+            <h1 class="startmsg">Dig Those Diglett</h1>
             <button class="gamemodebtn oneplayer">1 Player</button><br>
             <button class="gamemodebtn twoplayer">2 Players</button>
         </div>
@@ -69,9 +77,9 @@
     <div id="difficultymodal">
         <div class="difficulty-content">
             <p>Select a difficulty:</p>
-            <button class="difficulty-btn">Easy</button>
-            <button class="difficulty-btn">Intermediate</button>
-            <button class="difficulty-btn">Hard</button>
+            <button class="difficulty-btn easy">Easy</button>
+            <button class="difficulty-btn intermediate">Intermediate</button>
+            <button class="difficulty-btn hard">Hard</button>
         </div>
     </div>
 
@@ -107,9 +115,9 @@
     </div>
 
     <div id="credits">
+        <h3 class="creditsmsg">Credits</h3>
         <p class="credit">
-            Credits: <br>
-            Whoever drew those sweet background images <br>
+            Whoever drew these background images <br>
             My Fiance for drawing and adding some stuff to the background <br>
             And of course the GA instructional team
         </p>

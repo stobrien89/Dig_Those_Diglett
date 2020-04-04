@@ -1,3 +1,4 @@
+//🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐Global Variables and general purpose functions 🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐🌐//////
 
 let prevHole;
 
@@ -14,33 +15,49 @@ let text = 0;
 
 let win = false;
 
-// let twoPlayerGame = false;
+let tie = false;
 
+let difficultyLevel;
+
+const displayModal = (modal, property) => modal.css(`display`, property);
+
+const hideModal = (modal) => modal.css(`display`, `none`);
+
+const playSong = (song) => {
+    song.currentTime = 0;
+    song.play();
+}
+
+const timeRandomizer = (start, end) => Math.round(Math.random() * (end - start) + start);
+
+
+//𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞
+//            Audio Files
+//𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞𝄞
 const openingSound = new Audio("./media/opening.m4a");
 const selectSound = new Audio("./media/select.m4a");
 const diglettSound = new Audio('./media/diglett_hit.m4a');
 const waitingSound = new Audio('./media/selectgamemode.m4a');
 const gameSound = new Audio('./media/game.m4a');
 const creditsSound = new Audio('./media/end.mp3');
+const lossSound = new Audio('./media/loss.m4a');
+const winSound = new Audio('./media/win.mp3');
 
+///////////////////////             /////////////////////////////////////
+///////////////////////🅣🅔🅧🅣 stuff///////////////////////////////////////
 const gameDialogue = {
-    intro1: `Digletts have been popping up everywhere in Pallet Town!`,
-    intro: `Professor Oak needs your help! His garden has been overrun by Digletts.`,
-    instructions: `Use your mallet to hit the digletts as they pop out of their burrows`,
+    intro1: `Pallet town is having a Diglett crisis. Professor Oak needs your help! `,
+    intro: `His garden has been overrun by Digletts. Hit at least eight before they run away!`,
+    instructions: `Use your shovel to hit the digletts as they pop out of their holes.`,
     player2: `It's player 2's turn!`,
-    player1win: `Player 1 wins!`,
-    player2win: `Player 2 wins!`,
-    loss: `Oh no! They've gotten away! You'll have to try again some other time.`,
-    win: 'Nice job! Now the professor can finally get his garden back in order',
-
-
-
+    loss: `Oh no! The rest have gotten away! You'll have to try again some other time.`,
 }
 
 
 $(() => {
-
-    // Cached dom elements:
+    //////////////////////        $$$$$        ///////////////////////
+    //$$$$$$$$$$$$$$$$$$$$ Cached Dom Elements $$$$$$$$$$$$$$$$$$$$//
+   ///////////////////////        $$$$$           ////////////////////
     const $holes = $('.hole');
     const $digletts = $('.diglett');
     const $p1Score = $('.p1score');
@@ -55,8 +72,6 @@ $(() => {
     const $textMsg = $('#text-message');
     const $textMsgBtn = $('.textmod-btn')
     const $gameMsg = $('#game-message');
-    const $1Player = $('.oneplayer');
-    const $2Player = $('.twoplayer');
     const $gameModal = $('#gamemodal');
     const $gameModalBtn = $('.gamemod-btn');
     const $board = $('#board');
@@ -68,53 +83,36 @@ $(() => {
     const $credits = $('#credits');
     const $startOverBtn = $('.startover-btn');
     const $difficultyModal = $('#difficultymodal')
+    const $easyBtn = $('.easy');
+    const $intBtn = $('.intermediate');
+    const $hardBtn = $('.hard');
+///////////////////////////////////////////////////////////////////////////////////
 
-    //Initiates start of game
+ ///////Initiates start of game////////////////////////
     const startGame = () => {
         playSong(openingSound);
         displayModal($startModal, 'block')
     }
 
-    //event handler for start buttons
-    const gameMode = (event) => {
-        selectSound.play();
-        playSong(waitingSound);
-        $(event.currentTarget).hasClass('oneplayer') ? startText(1): startText(2);
-        hideModal($startModal);
-    }
-    
-    const playGame = (event) => {
-        selectSound.play();
-        waitingSound.pause();
-        if (twoPlayers) {
-            twoPlayerGame();
-        } else {
-            game();
-        }
-    }
 
-    const nextText = (event) => {
-        selectSound.play();
-        text++;
-        text === 2 ? gameText() : startText();
-    }
+    const startText = () => {
+        displayModal($board, 'grid');
+        displayModal($textModal, 'block');
+        $textMsg.text(gameDialogue.intro1);
+        if (text > 0) {
+            $textMsg.text(gameDialogue.intro);
+        }
+     }
 
     const gameText = () => {
         hideModal($textModal);
         displayModal($gameModal, 'block');
         $gameMsg.text(gameDialogue.instructions);
-    
     }
 
-    const displayModal = (modal, property) => {
-        modal.css(`display`, property);
-    }
-
-    const hideModal = (modal) => {
-        modal.css(`display`, `none`);
-    }
-    
-    const timeRandomizer = (start, end) => Math.round(Math.random() * (end - start) + start);
+    //////////////////////////                                          //////////////////////////////////
+    /////////////////////////Functions that control board movement and hits////////////////////////////////
+    /////////////////////////                                          /////////////////////////////////
 
     const randomHole = (arr) => {
         const index = Math.floor(Math.random() * arr.length);
@@ -126,24 +124,21 @@ $(() => {
         return prevHole = currentHole;
     }
 
-
-     const popUp = () => {
-         const time = timeRandomizer(1000, 5000);
+    const popUp = () => {
+         let time;
+         if (difficultyLevel === 'easy') {
+             time = timeRandomizer(1000, 2000)
+         }else if (difficultyLevel === 'intermediate'){
+             time = timeRandomizer(500, 1000);
+         }else {
+             time = timeRandomizer(300, 700);
+         }
          const hole = randomHole($holes);
          $(hole).addClass('popup');
          setTimeout(() => {
              $(hole).removeClass('popup')
              if(countdown) popUp();
          }, time);
-
-     }
-
-     //Event handler for hits to digletts
-     const hitDiglett = (event) => {
-        diglettSound.play(); 
-        p1Turn === true ? p1Score++ : p2Score++;
-         addPoints();
-         $(event.currentTarget).parent().removeClass('popup');
 
      }
 
@@ -165,94 +160,80 @@ $(() => {
 
         return setTimeout(() => countDown(--sec), 1000)
      }
-
-     //Displays game instructions
-     const startText = (mode) => {
-        displayModal($board, 'grid');
-        displayModal($textModal, 'block');
-        $textMsg.text(gameDialogue.intro1);
-        if (mode === 2) {  
-            twoPlayers = true;
-        }
-        if (text > 0) {
-            $textMsg.text(gameDialogue.intro);
-        }
-     }
-
-
-
+     
+     /////////////////////////////////////////////////////////                                                                      /////////////////////////////
+     ////////////////////////////////////////////////////////Functions that control player turns and exits out of game mode/////////////////////////////
+     ////////////////////////////////////////////////////////           Sorry for the Wet code                                 /////////////////////////////
+     
      const twoPlayerGame = () => {
         hideModal($gameModal);
         playSong(gameSound);
-            displayModal($scoreBoard2, 'block');
-            countdown = true;
-            popUp();
-            countDown(10);
-            if (p1Turn === true) {
-                setTimeout(() => {
-                    gameSound.pause();
-                    p1Turn = false;
-                    hideModal($scoreBoard2);
-                    displayModal($gameModal, 'block');
-                    $gameMsg.text(gameDialogue.player2);
-                    setTimeout(() => {
-                        gameSound.pause();
-                        hideModal($scoreBoard2);
-                        displayModal($endModal, 'block');
-                        if (p1Score < p2Score) {
-                            $endMsg.text(gameDialogue.player2win);
-                        }else {
-                            $endMsg.text(gameDialogue.player1win);
+        displayModal($scoreBoard2, 'block');
+        countdown = true;
+        popUp();
+        countDown(15);
+        
+        setTimeout(() => {
+            gameSound.pause();
+            hideModal($scoreBoard2);
+            if (p1Turn) {
+                displayModal($gameModal, 'block');
+                $gameMsg.text(gameDialogue.player2);
+                p1Turn = false;
+            }else {
+                checkWin();
+                p1Turn = false;
+                console.log(p1Turn);
+                console.log(win);
+                if(win === true) {
+                displayModal($endModal, 'block');
+                if (p1Score < p2Score) {
+                    playSong(winSound);
+                    $endMsg.text('Player 2 wins with ' + p2Score + ' hits!');
+                }else {
+                    playSong(winSound);
+                    $endMsg.text(`Player 1 wins with ${p1Score} hits!`);
                         }
-                        return;
-                    }, 11000)
-                }, 10000)
+                return;
+                }
             }
+        }, 16,500)
     }
 
-
-
-     const game = () => {
+    const game = () => {
             playSong(gameSound);
             hideModal($gameModal);
             displayModal($scoreBoard, 'block');
             countdown = true;
             popUp();
-            countDown(10);
+            countDown(15);
             checkWin();
             setTimeout(() => {
                 gameSound.pause();
                 hideModal($scoreBoard);
                 displayModal($endModal, 'block');
                 if (p1Score < 5) {
+                    lossSound.play();
                     $endMsg.text(gameDialogue.loss);
                 }else {
-                    $endMsg.text(gameDialogue.win);
+                    playSong(winSound);
+                    $endMsg.text(`Nice job! You ran off ${p1Score} of 'em. Now the professor can finally get his garden back in order`);
                 }
                 return;
-            }, 10000)
+            }, 16500)
      }
 
-
-    
-    
-    
-     const checkWin = () => {
+    const checkWin = () => {
+        if (twoPlayerGame) {
+            if (!p1Turn) {
+                if (p1Score > p2Score || p2Score > p1Score) {
+                    win = true;
+                }
+                else tie = true;
+            }
+        }
         if (p1Score >= 5) {
             win = true;
-        }
-    }
-
-    const playSong = (song) => {
-        song.currentTime = 0;
-        song.play();
-    }
-
-    const endOrReset = (event) => {
-        selectSound.play();
-        if (!win) {
-            hideModal($endModal);
-            displayModal($playAgainModal, 'block');
         }
     }
 
@@ -265,7 +246,64 @@ $(() => {
         win = false;
     }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////Event Handlers//////////////////////////////////////////
+    //////////////////////////////////////            ///////////////////////////////////
+    const gameMode = (event) => {
+        openingSound.pause();
+        selectSound.play();
+        playSong(waitingSound);
+        $(event.currentTarget).hasClass('twoplayer') ? twoPlayers = true : twoPlayers = false;
+        hideModal($startModal);
+        displayModal($difficultyModal, 'block');
+    }
+    
+    const playGame = (event) => {
+        selectSound.play();
+        waitingSound.pause();
+        if (twoPlayers) {
+            twoPlayerGame();
+        } else {
+            game();
+        }
+    }
+
+    const nextText = (event) => {
+        selectSound.play();
+        text++;
+        text === 2 ? gameText() : startText();
+    }
+
+     const hitDiglett = (event) => {
+        diglettSound.play(); 
+        p1Turn === true ? p1Score++ : p2Score++;
+         addPoints();
+         $(event.currentTarget).parent().removeClass('popup');
+    }
+
+    const endOrReset = (event) => {
+        selectSound.play();
+        hideModal($endModal);
+        displayModal($playAgainModal, 'block');
+    }
+    
+    const difficulty = (event) => {
+        let $target = $(event.currentTarget);
+        if ($target.hasClass('easy')) {
+           difficultyLevel = 'easy';
+           hideModal($difficultyModal);
+        }else if ($target.hasClass('intermediate')) {
+            difficultyLevel = 'intermediate';
+            hideModal($difficultyModal);
+        }else {
+            difficultyLevel = 'hard';
+            hideModal($difficultyModal);
+        }
+        startText();
+    }
+
     const restartGame = (event) => {
+        winSound.pause();
         selectSound.play();
         hideModal($playAgainModal);
         playSong(waitingSound);
@@ -274,6 +312,7 @@ $(() => {
     }
 
     const endGame = (event) => {
+        winSound.pause();
         hideModal($playAgainModal);
         hideModal($board);
         playSong(creditsSound);
@@ -283,15 +322,22 @@ $(() => {
     const startOver = (event) => {
         creditsSound.pause();
         resetValues();
-        twoPlayers = false;
         text = 0;
         hideModal($credits);0
         startGame();
     }
 
-    startGame();
 
+    //////////////////////////////////////
+   //        Event li$tener$
+    ///////////////////////////////////////
      $gameModeBtn.on('click', gameMode); 
+
+     $easyBtn.on('click', difficulty);
+
+     $intBtn.on('click', difficulty);
+
+     $hardBtn.on('click', difficulty);
 
      $textMsgBtn.on('click', nextText);
 
@@ -307,9 +353,6 @@ $(() => {
 
      $startOverBtn.on('click', startOver);
 
-    
-    // displayModal($scoreBoard2);
-    // hideModal($scoreBoard);
-    // twoPlayerGame();
      
+     startGame();
 })

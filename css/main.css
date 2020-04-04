@@ -23,7 +23,6 @@ body {
     width: 100%;
     border: 1px solid black;
     box-sizing: border-box;
-    /* position: relative; */
     overflow: hidden;
     background: url("../media/board.png") no-repeat center center fixed;
     background-size: 100% 100%;
@@ -36,6 +35,12 @@ body {
 
 #credits {
     background: url('../media/background_sea.png') no-repeat center center;
+    font-family: "Pokemon GB";
+}
+
+.credit {
+    font-size: .5rem;
+    line-height: 1.25rem;
 }
 
 #startmodal, #credits {
@@ -46,8 +51,6 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    /* height: 100vh; */
-    /* width: 100vw; */
     z-index: 1;
     overflow: hidden;
     background-position: 0 0;
@@ -72,11 +75,11 @@ body {
     overflow: visible;
 }
 
-.startmsg {
+.startmsg, .creditsmsg {
     font-family: "Arcade";
     font-size: 3rem;
     line-height: 55px;
-    margin-bottom: 35px;
+    margin-bottom: 1rem;
     color: rgb(161, 61, 45);
     text-shadow:
     0 1px #808d93,
@@ -87,25 +90,22 @@ body {
     -3px 2px #cdd2d5,
     -3px 4px #808d93,
     -4px 3px #cdd2d5,
-    /* -4px 5px #808d93,
-    -5px 4px #cdd2d5,
-    -5px 6px #808d93,
-    -6px 5px #cdd2d5, */
     -6px 7px #808d93,
     -7px 6px #cdd2d5,
     -7px 8px #808d93,
     -8px 7px #cdd2d5;
 }
 
+/*---------------- BUTTON STYLEZ ------------------------*/
+
 button:focus {
     outline: none;
 }
 
 .gamemodebtn, .startover-btn {
-    /* font-size: 25px; */
     font-family: "Pokemon GB";
     font-size: .5rem;
-    margin-top: 
+    margin-top: 2vh;
     letter-spacing: .5px;
     background-color: rgb(207, 231, 248);
     border: none;
@@ -121,47 +121,79 @@ button:focus {
     }
 
 .startover-btn {
-    font-size: 1rem;
+    font-size: .55rem;
     background-color: rgb(125, 203, 247);
 }
 
 .gamemod-btn, .quit-btn, .playagain-btn {
     position: relative;
     top: 0;
-    /* font-size: 18px; */
     font-family: "Pokemon GB";
     border: none;
+    font-size: .5rem;
+    margin-top: .1rem;
 }
 
-.gamemod-btn:before, .quit-btn:before, .playagain-btn:before {
+.difficulty-btn {
+    font-family: "Pokemon GB";
+    font-size: .4rem;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    margin-top: 1rem;
+}
+
+.gamemod-btn:before, .quit-btn:before, .playagain-btn:before, .gamemodebtn:before, .difficulty-btn:before {
     content: '▶';
     visibility: hidden;
 }
 
-.gamemod-btn:hover:before, .quit-btn:hover:before, .playagain-btn:hover:before {
+.gamemod-btn:hover:before, .quit-btn:hover:before, .playagain-btn:hover:before, .gamemodebtn:hover:before, .difficulty-btn:hover:before {
     display: inline-block;
     visibility: visible;
 }
 
+.textmod-btn, .endmod-btn {
+    position: relative;
+    left: 40%;
+    border: none;
+    animation: blinking 1.2s infinite;
+    font-size: .55rem;
 
-    
-    #gamemodal, #textmodal, #endmodal, #playagain, #difficultymodal {
-        display: none;
-        top: 20%;
-        font-size: .5rem;
-        position: relative;
-        font-family: "Pokemon GB";
-        background: url("../media/text_box.png");
-        background-color: white;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        z-index: 1;
-        height: 25%;
-        width: 45%;
-        margin: 0 auto;
-        overflow: hidden;
-        /* border-radius: 20px; */
-        /* border: 1px solid black; */
+}
+
+@keyframes blinking{
+    0%{     color: #000;    }
+    49%{    color: #000; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #000;    }
+}
+
+/*---------------------------------------  */
+
+#gamemodal, #textmodal, #endmodal, #playagain, #difficultymodal {
+    display: none;
+    top: 20%;
+    font-size: .5rem;
+    position: relative;
+    font-family: "Pokemon GB";
+    background: url("../media/text_box.png");
+    background-color: white;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 25%;
+    width: 45%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+    #difficultymodal {
+        padding: 1rem;
+    }
+
+    #difficulty-content {
+        padding-top: 2rem;
     }
 
     .gamemod-content, .textmodal-content, .endmodal-content, .playagain-content {
@@ -176,7 +208,7 @@ button:focus {
         left: 40%;
         border: none;
         animation: blinking 1.2s infinite;
-        /* font-size: 20px; */
+        font-size: .55rem;
 
     }
 
@@ -191,14 +223,13 @@ button:focus {
     #scoreboard {
         display: none;
         font-family: "Pokemon GB";
-        height: 28%;
+        height: 40vh;
         position: relative;
         background: url("../media/scoreboard.png");
         background-size: 100% 100%;
-        width: 45%;
+        width: 40vw;
         top: 4%;
         margin: 0 auto;
-        /* padding-top: 3%; */
         border-radius: 10px;
         overflow: hidden;
     }
@@ -206,33 +237,38 @@ button:focus {
     #scoreboard2 {
         display: none;
         font-family: "Pokemon GB";
-        height: 28%;
+        height: 40vh;
         position: relative;
         background: url("../media/scoreboard.png");
         background-size: 100% 100%;
-        width: 40%;
+        width: 40vw;
         top: 4%;
         margin: 0 auto;
-        /* padding-top: 3%; */
         border-radius: 10px;
         overflow: hidden;
     }
-
-    .score-content {
-        font-size: .5rem;
-    }
     
+    .score-content {
+        font-size: .75rem;
+    }
+
+    .score-content2 {
+        font-size: .57rem;
+    }
 
     .time {
+        font-size: 1rem;
         position: relative;
-        margin-top: 23%;
+        margin-top: 3rem;
     }
 
     .p1score {
         position: relative;
         margin-top: 8%;
     }
-    
+ 
+    /* ------------------------Everything below styles game board elements ---------------------------------- */
+
     #board {
         display: none;
         position: absolute;
@@ -244,8 +280,7 @@ button:focus {
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(3, 1fr);
         grid-column-gap: 5%;
-        border: 1px solid black;
-        /* grid-template-areas: "" */
+        cursor: url('../media/shovel.png'),auto;
     }
 
     .hole {
@@ -255,35 +290,19 @@ button:focus {
         overflow: hidden; 
         position: relative;
         z-index: 2;
-        border: 1px solid black;
     }
-
-    /* .hole:after {
-        display: block;
-        background: url('../media/hole3.png') bottom center no-repeat;
-        background-size: cover;
-        content: '';
-        width: 100%;
-        height: 5%;
-        position: absolute;
-        z-index: 2; 
-        bottom: -30px;
-      } */
 
     .diglett {
         display: block;
         height: 100%;
         width: 100%;
         position: relative;
-        /* bottom: 0; */
         background: url("../media/diglett.png") top center no-repeat;
         background-size: cover;
         background-position: 50% 45%;
         top: 100%;
-        /* overflow: visible; */
         transition: all .5s;
         z-index: -1;
-        border: 1px solid black;
     }
 
     .hole.popup .diglett {
