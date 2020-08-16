@@ -1,366 +1,405 @@
 @font-face {
-    font-family:"Pokemon GB";
-    src: url("../fonts/ptype.ttf") format("truetype");
-  }
-
-  @font-face {
-    font-family:"Arcade";
-    src: url("../fonts/arcade.ttf") format("truetype");
-  }
-
-html { 
-    font-size: calc(1em + 1vw); 
+  font-family: "Pokemon GB";
+  src: url("../fonts/ptype.ttf") format("truetype");
 }
 
-html, body {
-    margin: 0;
-    height: 100%;
+@font-face {
+  font-family: "Arcade";
+  src: url("../fonts/arcade.ttf") format("truetype");
+}
+
+html {
+  font-size: calc(1em + 1vw);
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
 }
 
 body {
-    text-align: center;
-    position: relative;
-    width: 100%;
-    border: 1px solid black;
-    box-sizing: border-box;
-    overflow: hidden;
-    background: url("../media/board.png") no-repeat center center fixed;
-    background-size: 100% 100%;
-    
+  text-align: center;
+  position: relative;
+  width: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: url("../media/board.png") no-repeat center center fixed;
+  background-size: 100% 100%;
 }
 
 #startmodal {
-    background: url("../media/background_mountains2copy.png") no-repeat center center fixed;
+  background: url("../media/background_mountains2copy.png") no-repeat center
+    center fixed;
 }
 
 #credits {
-    background: url('../media/background_sea.png') no-repeat center center;
-    font-family: "Pokemon GB";
+  background: url("../media/background_sea.png") no-repeat center center;
+  font-family: "Pokemon GB";
 }
 
 .credit {
-    font-size: .5rem;
-    line-height: 1.25rem;
+  font-size: 0.5rem;
+  line-height: 1.25rem;
 }
 
-#startmodal, #credits {
-    display: none;
-    position: relative;
-    background-size: cover;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-    background-position: 0 0;
-    animation: animate 15s ease-out infinite;
+#startmodal,
+#credits {
+  display: none;
+  position: relative;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  background-position: 0 0;
+  animation: animate 15s ease-out infinite;
 }
 @keyframes animate {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 100% 0;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
 }
 
-.startmod-content { 
-    text-align: center;
-    background-color: rgb(207, 231, 248);
-    background-size: cover;
-    margin: 3% auto 0 auto;
-    height: 40%;
-    width: 55%;
-    overflow: visible;
+.startmod-content {
+  text-align: center;
+  background-color: rgb(207, 231, 248);
+  background-size: cover;
+  margin: 3% auto 0 auto;
+  height: 30%;
+  width: 55%;
+  overflow: visible;
 }
 
-.startmsg, .creditsmsg {
-    font-family: "Arcade";
-    font-size: 3rem;
-    line-height: 55px;
-    margin-bottom: 1rem;
-    color: rgb(161, 61, 45);
-    text-shadow:
-    0 1px #808d93,
-    -1px 0 #cdd2d5,
-    -1px 2px #808d93,
-    -2px 1px #cdd2d5,
-    -2px 3px #808d93,
-    -3px 2px #cdd2d5,
-    -3px 4px #808d93,
-    -4px 3px #cdd2d5,
-    -6px 7px #808d93,
-    -7px 6px #cdd2d5,
-    -7px 8px #808d93,
-    -8px 7px #cdd2d5;
+.startmsg,
+.creditsmsg {
+  font-family: "Arcade";
+  font-size: 3rem;
+  line-height: 55px;
+  margin-top: 4rem;
+  color: rgb(161, 61, 45);
+  text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5,
+    -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5,
+    -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
 }
 
 /*---------------- BUTTON STYLEZ ------------------------*/
 
 button:focus {
-    outline: none;
+  outline: none;
 }
 
-.gamemodebtn, .startover-btn {
-    font-family: "Pokemon GB";
-    font-size: .5rem;
-    margin-top: 2vh;
-    letter-spacing: .5px;
-    background-color: rgb(207, 231, 248);
-    border: none;
-    animation: glowing 1300ms infinite;
+.gamemodebtn,
+.startover-btn {
+  font-family: "Pokemon GB";
+  font-size: 0.5rem;
+  margin-top: 2vh;
+  letter-spacing: 0.5px;
+  background-color: rgb(207, 231, 248);
+  border: none;
+  animation: glowing 1300ms infinite;
 }
 
 @keyframes glowing {
-    0% { color: black;}
-    25% {color: red;}
-    50% { color: gold;}
-    75% {color: red;}
-    100% { color:  black;}
-    }
-
-.startover-btn {
-    font-size: .55rem;
-    background-color: rgb(125, 203, 247);
+  0% {
+    color: black;
+  }
+  25% {
+    color: red;
+  }
+  50% {
+    color: gold;
+  }
+  75% {
+    color: red;
+  }
+  100% {
+    color: black;
+  }
 }
 
-.gamemod-btn, .quit-btn, .playagain-btn {
-    position: relative;
-    top: 0;
-    font-family: "Pokemon GB";
-    border: none;
-    font-size: .5rem;
-    margin-top: .1rem;
+.startover-btn {
+  font-size: 0.55rem;
+  background-color: rgb(125, 203, 247);
+}
+
+.gamemod-btn,
+.quit-btn,
+.playagain-btn {
+  position: relative;
+  top: 0;
+  font-family: "Pokemon GB";
+  border: none;
+  font-size: 0.5rem;
+  margin-top: 0.1rem;
 }
 
 .difficulty-btn {
-    font-family: "Pokemon GB";
-    font-size: .4rem;
-    margin: 0 auto;
-    display: block;
-    border: none;
-    margin-top: 1rem;
+  font-family: "Pokemon GB";
+  font-size: 0.4rem;
+  margin: 0 auto;
+  display: block;
+  border: none;
+  margin-top: 1rem;
 }
 
-.gamemod-btn:before, .quit-btn:before, .playagain-btn:before, .gamemodebtn:before, .difficulty-btn:before {
-    content: '▶';
-    visibility: hidden;
+.gamemod-btn:before,
+.quit-btn:before,
+.playagain-btn:before,
+.gamemodebtn:before,
+.difficulty-btn:before {
+  content: "▶";
+  visibility: hidden;
 }
 
-.gamemod-btn:hover:before, .quit-btn:hover:before, .playagain-btn:hover:before, .gamemodebtn:hover:before, .difficulty-btn:hover:before {
-    display: inline-block;
-    visibility: visible;
+.gamemod-btn:hover:before,
+.quit-btn:hover:before,
+.playagain-btn:hover:before,
+.gamemodebtn:hover:before,
+.difficulty-btn:hover:before {
+  display: inline-block;
+  visibility: visible;
 }
 
-.textmod-btn, .endmod-btn {
-    position: relative;
-    left: 40%;
-    border: none;
-    animation: blinking 1.2s infinite;
-    font-size: .55rem;
-
+.textmod-btn,
+.endmod-btn {
+  position: relative;
+  left: 40%;
+  border: none;
+  animation: blinking 1.2s infinite;
+  font-size: 0.55rem;
 }
 
-@keyframes blinking{
-    0%{     color: #000;    }
-    49%{    color: #000; }
-    60%{    color: transparent; }
-    99%{    color:transparent;  }
-    100%{   color: #000;    }
+@keyframes blinking {
+  0% {
+    color: #000;
+  }
+  49% {
+    color: #000;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
 }
 
 /*---------------------------------------  */
 
-#gamemodal, #textmodal, #endmodal, #playagain, #difficultymodal {
-    display: none;
-    top: 20%;
-    font-size: .5rem;
-    position: relative;
-    font-family: "Pokemon GB";
-    background: url("../media/text_box.png");
-    background-color: white;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    height: 25%;
-    width: 45%;
-    margin: 0 auto;
-    overflow: hidden;
+#gamemodal,
+#textmodal,
+#endmodal,
+#playagain,
+#difficultymodal {
+  display: none;
+  top: 20%;
+  font-size: 0.5rem;
+  position: relative;
+  font-family: "Pokemon GB";
+  background: url("../media/text_box.png");
+  background-color: white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 25%;
+  width: 45%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-    #difficultymodal {
-        padding: 1rem;
-    }
+#difficultymodal {
+  padding: 1rem;
+}
 
-    #difficulty-content {
-        padding-top: 2rem;
-    }
+#difficulty-content {
+  padding-top: 2rem;
+}
 
-    .gamemod-content, .textmodal-content, .endmodal-content, .playagain-content {
-        position: relative;
-        top: 10%;
-        line-height: 150%;
-        padding: 5%;
-    } 
+.gamemod-content,
+.textmodal-content,
+.endmodal-content,
+.playagain-content {
+  position: relative;
+  top: 10%;
+  line-height: 150%;
+  padding: 5%;
+}
 
-    .textmod-btn, .endmod-btn {
-        position: relative;
-        left: 40%;
-        border: none;
-        animation: blinking 1.2s infinite;
-        font-size: .55rem;
+.textmod-btn,
+.endmod-btn {
+  position: relative;
+  left: 40%;
+  border: none;
+  animation: blinking 1.2s infinite;
+  font-size: 0.55rem;
+}
 
-    }
+@keyframes blinking {
+  0% {
+    color: #000;
+  }
+  49% {
+    color: #000;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
+}
 
-    @keyframes blinking{
-        0%{     color: #000;    }
-        49%{    color: #000; }
-        60%{    color: transparent; }
-        99%{    color:transparent;  }
-        100%{   color: #000;    }
-    }
+#scoreboard {
+  display: none;
+  font-family: "Pokemon GB";
+  height: 40vh;
+  position: relative;
+  background: url("../media/scoreboard.png");
+  background-size: 100% 100%;
+  width: 40vw;
+  top: 4%;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-    #scoreboard {
-        display: none;
-        font-family: "Pokemon GB";
-        height: 40vh;
-        position: relative;
-        background: url("../media/scoreboard.png");
-        background-size: 100% 100%;
-        width: 40vw;
-        top: 4%;
-        margin: 0 auto;
-        border-radius: 10px;
-        overflow: hidden;
-    }
+#scoreboard2 {
+  display: none;
+  font-family: "Pokemon GB";
+  height: 40vh;
+  position: relative;
+  background: url("../media/scoreboard.png");
+  background-size: 100% 100%;
+  width: 40vw;
+  top: 4%;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-    #scoreboard2 {
-        display: none;
-        font-family: "Pokemon GB";
-        height: 40vh;
-        position: relative;
-        background: url("../media/scoreboard.png");
-        background-size: 100% 100%;
-        width: 40vw;
-        top: 4%;
-        margin: 0 auto;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    
-    .score-content {
-        font-size: .75rem;
-    }
+.score-content {
+  font-size: 0.75rem;
+}
 
-    .score-content2 {
-        font-size: .57rem;
-    }
+.score-content2 {
+  font-size: 0.57rem;
+}
 
-    .time {
-        font-size: 1rem;
-        position: relative;
-        margin-top: 3rem;
-    }
+.time {
+  font-size: 1rem;
+  position: relative;
+  margin-top: 3rem;
+}
 
-    .p1score {
-        position: relative;
-        margin-top: 8%;
-    }
- 
-    /* ------------------------Everything below styles game board elements ---------------------------------- */
+.p1score {
+  position: relative;
+  margin-top: 8%;
+}
 
-    #board {
-        display: none;
-        position: absolute;
-        margin: 0 auto;
-        bottom: 3.5%;
-        left: 5%;
-        height: 43%;
-        width: 90%;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        grid-column-gap: 5%;
-        cursor: url('../media/shovel.png'),auto;
-    }
+/* ------------------------Everything below styles game board elements ---------------------------------- */
 
-    .hole {
-        background: url("../media/hole3.png") bottom center no-repeat;
-        background-size: cover;
-        background-position: 50% 40%;
-        overflow: hidden; 
-        position: relative;
-        z-index: 2;
-    }
+#board {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  bottom: 3.5%;
+  left: 5%;
+  height: 43%;
+  width: 90%;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 5%;
+  cursor: url("../media/shovel.png"), auto;
+}
 
-    .diglett {
-        display: block;
-        height: 100%;
-        width: 100%;
-        position: relative;
-        background: url("../media/diglett.png") top center no-repeat;
-        background-size: cover;
-        background-position: 50% 45%;
-        top: 100%;
-        transition: all .5s;
-        z-index: -1;
-    }
+.hole {
+  background: url("../media/hole3.png") bottom center no-repeat;
+  background-size: cover;
+  background-position: 50% 40%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
 
-    .hole.popup .diglett {
-        top: 0;
-    }
+.diglett {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: url("../media/diglett.png") top center no-repeat;
+  background-size: cover;
+  background-position: 50% 45%;
+  top: 100%;
+  transition: all 0.5s;
+  z-index: -1;
+}
 
-    .hole10 {
-        grid-column: 5/6;
-        grid-row: 3/4;
-    }
+.hole.popup .diglett {
+  top: 0;
+}
 
-    .hole9 {
-        position: relative;
-        grid-column: 4/4;
-        grid-row: 3/4;
-        right: 60%;
-    }
+.hole10 {
+  grid-column: 5/6;
+  grid-row: 3/4;
+}
 
-    .hole8 {
-        grid-column: 2/3;
-        grid-row: 3/4;
-    }
+.hole9 {
+  position: relative;
+  grid-column: 4/4;
+  grid-row: 3/4;
+  right: 60%;
+}
 
-    .hole7 {
-        grid-column: 6/7;
-        grid-row: 2/3;
-    }
+.hole8 {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
 
-    .hole6 {
-        position: relative;
-        left: 35%;
-        grid-column: 4/5;
-        grid-row: 2/3;
-    }
+.hole7 {
+  grid-column: 6/7;
+  grid-row: 2/3;
+}
 
-    .hole5 {
-        position: relative;
-        right: 30%;
-        grid-column: 3/4;
-        grid-row: 2/3;
-    }
+.hole6 {
+  position: relative;
+  left: 35%;
+  grid-column: 4/5;
+  grid-row: 2/3;
+}
 
-    .hole4 {
-        grid-column: 1/2;
-        grid-row: 2/3;
-    }
-    .hole3 {
-        grid-column: 5/6;
-        grid-row: 1/2;
-    }
-    .hole2 {
-        position: relative;
-        right: 60%;
-        grid-column: 4/5;
-        grid-row: 1/2;
-    }
-    .hole1 {
-        grid-column: 2/3;
+.hole5 {
+  position: relative;
+  right: 30%;
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
 
-    }
-    
+.hole4 {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.hole3 {
+  grid-column: 5/6;
+  grid-row: 1/2;
+}
+.hole2 {
+  position: relative;
+  right: 60%;
+  grid-column: 4/5;
+  grid-row: 1/2;
+}
+.hole1 {
+  grid-column: 2/3;
+}
