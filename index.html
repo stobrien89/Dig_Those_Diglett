@@ -1,129 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dig Those Diglett</title>
-    <link rel="icon" href="./media/favicon.png">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="./media/favicon.png" />
+    <link rel="stylesheet" href="css/main.css" />
     <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     <script src="JS/app.js"></script>
-</head>
-<body>
-    <!------------------------------------------- WARNING: Excessive amount of Divs--------------------------------->
-
-    
+  </head>
+  <body>
     <!--------------------------------------- ELEMENTS INVOLVING THE GAME, TIME AND SCOREKEEPING  -------------------------------->
 
     <div id="scoreboard">
-        <h6 class="time score-content">Time</h6>
-        <p class="score-content">Score: <span class="p1score">0</span></p>
-    </div>
-    
-    <div id="scoreboard2">
-        <h3 class="time score-content">Time</h3>
-        <h5 class="score-content">player 1 score: <span class="p1score">0</span></h5>
-        <h5 class="score-content">player 2 score: <span class="p2score">0</span></h5>
+      <h6 class="time score-content">Time</h6>
+      <p class="score-content">Score: <span class="p1score">0</span></p>
     </div>
 
+    <div id="scoreboard2">
+      <h3 class="time score-content">Time</h3>
+      <h5 class="score-content">
+        player 1 score: <span class="p1score">0</span>
+      </h5>
+      <h5 class="score-content">
+        player 2 score: <span class="p2score">0</span>
+      </h5>
+    </div>
 
     <div id="board">
-        <div class="hole hole1">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole2">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole3">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole4">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole5">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole6">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole7">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole8">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole9">
-            <div class="diglett"></div>
-        </div>
-        <div class="hole hole10">
-            <div class="diglett"></div>
-        </div>
+      <div class="hole hole1">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole2">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole3">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole4">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole5">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole6">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole7">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole8">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole9">
+        <div class="diglett"></div>
+      </div>
+      <div class="hole hole10">
+        <div class="diglett"></div>
+      </div>
     </div>
-
 
     <!---------------------------------------------------------------- LOTS OF MODALS --------------------------------------------------------------->
 
     <div id="startmodal">
-        <div class="startmod-content">
-            <h1 class="startmsg">Dig Those Diglett</h1>
-            <button class="gamemodebtn oneplayer">1 Player</button><br>
-            <button class="gamemodebtn twoplayer">2 Players</button>
-        </div>
+      <div class="startmod-content">
+        <h1 class="startmsg">Dig Those Diglett</h1>
+        <button class="gamemodebtn oneplayer">1 Player</button><br />
+        <button class="gamemodebtn twoplayer">2 Players</button>
+      </div>
     </div>
 
     <div id="difficultymodal">
-        <div class="difficulty-content">
-            <p>Select a difficulty:</p>
-            <button class="difficulty-btn easy">Easy</button>
-            <button class="difficulty-btn intermediate">Intermediate</button>
-            <button class="difficulty-btn hard">Hard</button>
-        </div>
+      <div class="difficulty-content">
+        <p>Select a difficulty:</p>
+        <button class="difficulty-btn easy">Easy</button>
+        <button class="difficulty-btn intermediate">Intermediate</button>
+        <button class="difficulty-btn hard">Hard</button>
+      </div>
     </div>
 
     <div id="gamemodal">
-        <div class="gamemod-content">
-            <p id="game-message">The game is simple: hit as many Digletts
-                as you can!
-            </p>
-            <button class="gamemod-btn">Start</button>
-        </div>
+      <div class="gamemod-content">
+        <p id="game-message">
+          The game is simple: hit as many Digletts as you can!
+        </p>
+        <button class="gamemod-btn">Start</button>
+      </div>
     </div>
 
     <div id="textmodal">
-        <div class="textmodal-content">
-            <p id="text-message"></p>
-            <button class="textmod-btn">▼</button>
-        </div>
+      <div class="textmodal-content">
+        <p id="text-message"></p>
+        <button class="textmod-btn">▼</button>
+      </div>
     </div>
 
     <div id="endmodal">
-        <div class="endmodal-content">
-            <p id="end-message"></p>
-            <button class="endmod-btn">▼</button>
-        </div>
+      <div class="endmodal-content">
+        <p id="end-message"></p>
+        <button class="endmod-btn">▼</button>
+      </div>
     </div>
 
     <div id="playagain">
-        <div class="playagain-content">
-            <p id="playagain-message">Would you like to play again ?</p>
-            <button class="playagain-btn">Play Again</button>
-            <button class="quit-btn">Quit</button>
-        </div>
+      <div class="playagain-content">
+        <p id="playagain-message">Would you like to play again ?</p>
+        <button class="playagain-btn">Play Again</button>
+        <button class="quit-btn">Quit</button>
+      </div>
     </div>
 
     <div id="credits">
-        <h3 class="creditsmsg">Credits</h3>
-        <p class="credit">
-            Whoever drew these background images <br>
-            My fiance for drawing and adding some stuff to the intro screen and board <br>
-            And of course the GA instructional team
-        </p>
-        <button class="startover-btn">Return to Menu</button>
+      <h3 class="creditsmsg">Credits</h3>
+      <p class="credit">
+        Whoever drew these amazing background images. <br />
+        My fiance, for helping to customize images for the game and board.
+        <br />
+        And of course the GA instructional team.
+      </p>
+      <button class="startover-btn">Return to Menu</button>
     </div>
-
-
-</body>
+  </body>
 </html>

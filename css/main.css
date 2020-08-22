@@ -176,6 +176,16 @@ button:focus {
   font-size: 0.55rem;
 }
 
+.textmod-btn,
+.endmod-btn,
+.gamemod-btn,
+.playagain-btn,
+.gamemodbtn,
+.difficulty-btn,
+.quit-btn {
+  background-color: rgb(255, 255, 255);
+}
+
 @keyframes blinking {
   0% {
     color: #000;
