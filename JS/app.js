@@ -137,7 +137,6 @@ $(() => {
       $(hole).removeClass("popup");
       if (countdown) popUp();
     }, time);
-    debugger;
   };
 
   const addPoints = () => {
